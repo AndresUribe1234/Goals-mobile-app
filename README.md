@@ -19,11 +19,11 @@ The Goals Mobile App is a simple yet powerful tool to help users manage their pe
 
 ## Installation
 
-1. Ensure you have [Expo CLI](https://expo.io/tools#cli) installed globally on your machine -`npm install -g expo-cli`
-2. Clone the repository -`git clone https://github.com/AndresUribe1234/Goals-mobile-app.git`
-3. Change to the project directory -`cd Goals-mobile-app`
-4. Install the required dependencies -`npm install`
-5. Start the Expo development server -`expo start`
+1. Ensure you have [Expo CLI](https://expo.io/tools#cli) installed globally on your machine `npm install -g expo-cli`
+2. Clone the repository `git clone https://github.com/AndresUribe1234/Goals-mobile-app.git`
+3. Change to the project directory `cd Goals-mobile-app`
+4. Install the required dependencies `npm install`
+5. Start the Expo development server `expo start`
 6. Open the Expo app on your iOS or Android device, or use an emulator, and scan the QR code displayed in the terminal to run the app on your device.
 
 ## Usage
