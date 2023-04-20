@@ -15,6 +15,12 @@ const ListSection = (props) => {
         <Text style={styles.header}>GOALS</Text>
       </View>
       <View style={styles.listSection}>
+        {data.length < 1 && (
+          <Text style={styles.uiText}>
+            No goals to display yet. Click the 'Add goal!' button to get
+            started.
+          </Text>
+        )}
         {data.map((ele, index) => (
           <ListItem
             text={ele}
@@ -53,4 +59,5 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
   },
+  uiText: { textAlign: "center" },
 });

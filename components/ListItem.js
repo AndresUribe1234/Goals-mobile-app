@@ -11,7 +11,16 @@ const ListItem = (props) => {
     <View style={styles.itemContainer}>
       <Text style={styles.itemText}>{text}</Text>
       <Pressable onPress={deleteHandler}>
-        <MaterialIcons name="delete" size={30} />
+        {({ pressed }) => (
+          <View
+            style={[
+              styles.btn,
+              { backgroundColor: pressed ? "#4B626D" : "transparent" },
+            ]}
+          >
+            <MaterialIcons name="delete" size={30} color="black" />
+          </View>
+        )}
       </Pressable>
     </View>
   );
@@ -31,4 +40,5 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   itemText: { color: "white" },
+  pressedClass: { color: "white" },
 });

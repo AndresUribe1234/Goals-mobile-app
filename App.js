@@ -1,24 +1,56 @@
-import { ScrollView, StyleSheet, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  Pressable,
+  Text,
+  StatusBar,
+} from "react-native";
 import InputSection from "./components/InputSection";
 import ListSection from "./components/ListSection";
 import { useState } from "react";
 
 export default function App() {
   const [goalData, setGoalData] = useState([]);
+  const [modalState, setModalState] = useState(false);
 
   const addGoalHandler = (newGoal) => {
     setGoalData((prev) => [...prev, newGoal]);
   };
 
   const onDeleteHandler = (idToDelte) => {
-    console.log("index to delete of array from app", idToDelte);
     setGoalData((prev) => prev.filter((ele) => ele !== prev[idToDelte]));
+  };
+
+  const openModalHandler = () => {
+    setModalState(true);
+  };
+
+  const closeModalHandler = () => {
+    setModalState(false);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.containerOne}>
-        <InputSection onAddGoal={addGoalHandler} />
+        <StatusBar barStyle={"default"} />
+        <InputSection
+          onAddGoal={addGoalHandler}
+          onShowModal={modalState}
+          onCloseModal={closeModalHandler}
+        />
+        <Pressable onPress={openModalHandler}>
+          {({ pressed }) => (
+            <View
+              style={[
+                styles.btn,
+                { backgroundColor: pressed ? "#e67300" : "#ff8c00" },
+              ]}
+            >
+              <Text style={styles.textBtn}>Add goal</Text>
+            </View>
+          )}
+        </Pressable>
       </View>
       <View style={styles.containerTwo}>
         <ScrollView>
@@ -36,17 +68,28 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   containerOne: {
-    flex: 2,
+    flex: 1,
     width: "100%",
     backgroundColor: "white",
     alignItems: "center",
+    justifyContent: "center",
     borderWidth: 1,
     borderColor: "#ccc",
     borderStyle: "solid",
   },
   containerTwo: {
-    flex: 3,
+    flex: 9,
     width: "100%",
     backgroundColor: "white",
   },
+  btn: {
+    backgroundColor: "##ff8c00",
+    borderRadius: 4,
+    padding: 10,
+    alignSelf: "center",
+    marginRight: 10,
+    width: 100,
+    display: "flex",
+  },
+  textBtn: { color: "white", textAlign: "center" },
 });
